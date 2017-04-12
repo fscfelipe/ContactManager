@@ -1,6 +1,26 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <h1>Lista de contatos</h1>
+</div>
 
-<h1>Listing Contatos</h1>
+<%= link_to 'New Contato', new_contato_path %>
+<% @contatos.each do |contato|  %>
+  <div class= "contatos">
+    <strong ><%= contato.nome %></strong>
+    <div class ="meta">
+      <%= link_to "Show", contato %>
+      <span class= "admin">
+        <%= link_to "Edit", edit_contato_path(contato) %>
+        <%= link_to "Delete", contato, method: :delete, data: {confirm: "Tem certeza que quer deletar esse contato?"} %>
+      </span>
+    </div>
+
+  </div>
+
+<% end %>
+
+
+
+<!--<p id="notice"><%= notice %></p>
 
 <table>
   <thead>
@@ -35,3 +55,4 @@
 <br>
 
 <%= link_to 'New Contato', new_contato_path %>
+-->
