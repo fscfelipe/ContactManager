@@ -1,4 +1,10 @@
-<%= form_for(@contato) do |f| %>
+<%= simple_form_for(@contato, html: { class: 'form-horizontal' }, wrapper: :horizontal_form,
+    wrapper_mappings: {
+    check_boxes: :horizontal_radio_and_checkboxes,
+    radio_buttons: :horizontal_radio_and_checkboxes,
+    file: :horizontal_file_input,
+    boolean: :horizontal_boolean}) do |f| %>
+  
   <% if @contato.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@contato.errors.count, "error") %> prohibited this contato from being saved:</h2>
@@ -11,31 +17,17 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :nome %><br>
-    <%= f.text_field :nome %>
+  <%= f.input :nome %>
+  <%= f.input :apelido %>
+  <%= f.input :email %>
+  <%= f.input :telefone %>
+  <%= f.input :nascimento %>
+  <%= f.input :foto, as: :file %>
+
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-10">
+       <%= f.button :submit %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :apelido %><br>
-    <%= f.text_field :apelido %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :telefone %><br>
-    <%= f.text_field :telefone %>
-  </div>
-  <div class="field">
-    <%= f.label :nascimento %><br>
-    <%= f.text_field :nascimento %>
-  </div>
-  <div class="field">
-    <%= f.label :foto %><br>
-    <%= f.text_field :foto %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
 <% end %>
