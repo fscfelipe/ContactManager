@@ -17,6 +17,7 @@
     </div>
   <% end %>
 
+  <%= f.hidden_field :user_id, :value => current_user.id %>
   <%= f.input :nome %>
   <%= f.input :apelido %>
   <%= f.input :email %>

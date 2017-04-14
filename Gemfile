@@ -3,6 +3,9 @@ source 'https://rubygems.org'
 gem 'simple_form'
 
 gem 'devise'
+gem 'aws-sdk', '~> 2'
+gem 'aws-sdk-rails'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.8'

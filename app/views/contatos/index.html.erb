@@ -1,24 +1,30 @@
 <div class="page-header">
   <h1>Lista de contatos <%= link_to 'Adicionar', new_contato_path, class: "btn btn-success" %></h1>
 </div>
+<% if user_signed_in? %>
+<% current_user.contatos.each do |contato|  %>
 
-<% @contatos.each do |contato|  %>
+<div class= "contatos">
 
-  <div class= "contatos">
+  <div class="row">
+      <div class="col-md-1"> <%= image_tag contato.imgURL %></div>
 
-    <strong ><%= contato.nome %></strong>
-    <div class ="meta">
-      <%= link_to "Show", contato %> |
-      <span class= "admin">
-        <%= link_to "Edit", edit_contato_path(contato) %> |
-        <%= link_to "Delete", contato, method: :delete, data: {confirm: "Tem certeza que quer deletar esse contato?"} %>
-      </span>
-    </div>
+      <div class="span7">
+        <strong ><%= contato.nome %></strong>
 
+         <div class ="meta">
+          <%= link_to "Show", contato %> |
+          <span class= "admin">
+            <%= link_to "Edit", edit_contato_path(contato) %> |
+            <%= link_to "Delete", contato, method: :delete, data: {confirm: "Tem certeza que quer deletar esse contato?"} %>
+          </span>
+        </div>
+      </div>
   </div>
+</div>
 
 <% end %>
-
+<% end %>
 
 
 <!--<p id="notice"><%= notice %></p>

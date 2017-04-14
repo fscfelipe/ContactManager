@@ -1,7 +1,8 @@
 class ContatosController < ApplicationController
   before_action :set_contato, only: [:show, :edit, :update, :destroy]
+  
 
-  before_filter :authenticate_user!, only: [:new, :create]
+  before_filter :authenticate_user!
   # GET /contatos
   # GET /contatos.json
   def index
@@ -70,6 +71,6 @@ class ContatosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contato_params
-      params.require(:contato).permit(:nome, :apelido, :email, :telefone, :nascimento, :foto)
+      params.require(:contato).permit(:nome, :apelido, :email, :telefone, :nascimento, :foto, :user_id)
     end
 end
