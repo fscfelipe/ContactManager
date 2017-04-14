@@ -47,3 +47,4 @@ class ContatosControllerTest < ActionController::TestCase
     assert_redirected_to contatos_path
   end
 end
+

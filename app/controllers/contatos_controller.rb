@@ -1,6 +1,7 @@
 class ContatosController < ApplicationController
   before_action :set_contato, only: [:show, :edit, :update, :destroy]
 
+  before_filter :authenticate_user!, only: [:new, :create]
   # GET /contatos
   # GET /contatos.json
   def index
