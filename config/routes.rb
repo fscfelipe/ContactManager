@@ -2,6 +2,14 @@ Rails.application.routes.draw do
   devise_for :users
   resources :contatos
 
+  devise_scope :user do
+    get 'register', to: 'devise/registrations#new', as: :register
+    get 'login', to: 'devise/sessions#new', as: :login
+    get 'logout', to: 'devise/sessions#destroy', as: :logout
+  end
+
+  
+  get 'lista', to: 'contatos#index', as: :lista
   root 'contatos#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
