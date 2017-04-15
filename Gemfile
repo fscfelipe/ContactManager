@@ -5,7 +5,7 @@ gem 'simple_form'
 gem 'devise'
 gem 'aws-sdk', '~> 2'
 gem 'aws-sdk-rails'
-
+gem "paperclip", "~> 5.0.0"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.8'

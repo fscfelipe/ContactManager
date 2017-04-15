@@ -1,6 +1,7 @@
 <div class="page-header">
   <h1>Lista de contatos <%= link_to 'Adicionar', new_contato_path, class: "btn btn-success" %></h1>
 </div>
+
 <% if user_signed_in? %>
 <% current_user.contatos.each do |contato|  %>
 
@@ -8,7 +9,6 @@
 
   <div class="row">
       <div class="col-md-1"> <%= image_tag contato.imgURL %></div>
-
       <div class="span7">
         <strong ><%= contato.nome %></strong>
 
