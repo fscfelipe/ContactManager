@@ -1,32 +1,54 @@
-<div class="page-header">
-  <h1>Lista de contatos <%= link_to 'Adicionar', new_contato_path, class: "btn btn-success" %></h1>
+<div class="page-header row">
+  <div class="col-lg-8">
+    <h1>Lista de contatos <%= link_to 'Adicionar', new_contato_path, class: "btn btn-success" %></h1>
+  </div>
+
+  <p><br>
+
+      <%= form_tag(contatos_path, method: :get) do %>
+      <div class="col-lg-4">
+            <div class="input-group">
+                <%= text_field_tag :term , params[:term], class: "form-control", placeholder: "Procurar contato..." %>
+                <span class="input-group-btn">
+                    <%= submit_tag 'Go!' , name: nil, class: "btn btn-default" %>
+                </span>
+            </div>
+      </div>
+      <% end %>
+
+
+
 </div>
 
 <% if user_signed_in? %>
-<% current_user.contatos.each do |contato|  %>
+      <% if @contatos.present? %>
+              <% current_user.contatos.each do |contato|  %>
+          <!--  contato.nome.include? "Felipe"  -->
+                <%  if contato.nome.include? params[:term].to_s %>
+                    <div class= "contatos row">
+                    <!-- <%= contato.avatar.url %> -->
+                      <div class="row">
 
-<div class= "contatos">
-<!-- <%= contato.avatar.url %> -->
-  <div class="row">
-      <div class="col-md-1"> <%= link_to image_tag(contato.avatar.url(:thumb), size: "100", :class => "style_image"), contato  %>
-      </div>
-      
-      
-      <div class="col-md-8">
-      <div class="data1"><strong >Nome: </strong> <%= contato.nome %></div>
-      <div class="data1"><strong >Email: </strong> <%= contato.email %></div>
-      <div class="data1"><strong >Telefone: </strong><%= contato.telefone %></div>
-
-      <!--<%= link_to "Ver", contato, class: "btn btn-info btn-sm" %>-->
-      </div>
-        
-         <br>
-          <%= link_to "Edit", edit_contato_path(contato),  class: "btn btn-primary" %> |
-          <%= link_to "Delete", contato, method: :delete, data: {confirm: "Tem certeza que quer deletar esse contato?"}, class: "btn btn-danger"  %>
-       
-  </div>
-</div>
-
-
-<% end %>
+                          <div class="col-md-1"> <%= link_to image_tag(contato.avatar.url(:thumb), size: "100", :class => "style_image"), contato  %>
+                          </div>
+                          <p></p>
+                          
+                          <div class="col-md-8">
+                          <div class="data1"><strong >Nome: </strong> <%= contato.nome %></div>
+                          <div class="data1"><strong >Email: </strong> <%= contato.email %></div>
+                          <div class="data1"><strong >Telefone: </strong><%= contato.telefone %></div>
+                          
+                          <!--<%= link_to "Ver", contato, class: "btn btn-info btn-sm" %>-->
+                          </div>
+                            
+                             <br>
+                              <%= link_to "Editar", edit_contato_path(contato),  class: "btn btn-primary" %> |
+                              <%= link_to "Deletar", contato, method: :delete, data: {confirm: "Tem certeza que quer deletar esse contato?"}, class: "btn btn-danger"  %>
+                         
+                      </div>
+                    </div>
+                     
+                    <% end %>
+              <% end %>
+      <% end %>
 <% end %>

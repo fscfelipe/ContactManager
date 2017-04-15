@@ -26,6 +26,13 @@ class Contato < ActiveRecord::Base
      :s3_region => ENV.fetch('AWS_REGION')}
   end
 
+  def self.search(term)
+    if term
+      where('nome LIKE ?', "%#{term}%").order('id DESC')
+    else
+      order('id DESC') 
+    end
+  end
   # Validate the attached image is image/jpg, image/png, etc
   #validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
  #:path => ":rails_root/public/:attachment/:style/:filename",

@@ -6,7 +6,10 @@ class ContatosController < ApplicationController
   # GET /contatos
   # GET /contatos.json
   def index
-    @contatos = Contato.all
+    #@contatos = Contato.all
+
+    @contatos = Contato.search(params[:term])
+
   end
 
   # GET /contatos/1
@@ -71,6 +74,6 @@ class ContatosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contato_params
-      params.require(:contato).permit(:nome, :apelido, :email, :telefone, :nascimento, :user_id, :avatar)
+      params.require(:contato).permit(:nome, :apelido, :email, :telefone, :nascimento, :user_id, :avatar, :term)
     end
 end

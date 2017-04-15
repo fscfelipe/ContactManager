@@ -17,6 +17,7 @@
     </div>
   <% end %>
 
+<div class="col-lg-10">
   <%= f.hidden_field :user_id, :value => current_user.id %>
   <%= f.input :nome %>
   <%= f.input :apelido %>
@@ -24,11 +25,13 @@
   <%= f.input :telefone %>
   <%= f.input :nascimento %>
   <%= f.input :avatar, as: :file%>
-  
   <div class="form-group">
-    <div class="col-sm-offset-3 col-sm-10">
-       <%= f.button :submit %>
+    <div class="col-sm-offset-3 col-sm-5">
+       <%= f.button  :submit %>
     </div>
   </div>
+  </div>
+  
+  
 
 <% end %>

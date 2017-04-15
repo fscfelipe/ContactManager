@@ -1,5 +1,11 @@
-<p id="notice"><%= notice %></p>
-
+<div class= "contatos row">
+<div class="col-md-5">
+<div class="showFoto col-sm-offset-4 col-sm-5">
+<%= image_tag(@contato.avatar.url(:original), size: "300") %>
+</div>
+</div>
+<div class="col-md-6">
+<div class="showDadosContato">
 <p>
   <strong>Nome:</strong>
   <%= @contato.nome %>
@@ -24,11 +30,17 @@
   <strong>Nascimento:</strong>
   <%= @contato.nascimento %>
 </p>
+</div>
+</div>
 
-<p>
-  <strong>Foto:</strong>
-  <%= @contato.foto %>
-</p>
 
-<%= link_to 'Edit', edit_contato_path(@contato) %> |
-<%= link_to 'Back', contatos_path %>
+</div>
+<br>
+<div class="col-lg-10">
+<div class="form-group">
+<div class="col-sm-offset-3 col-sm-5">
+<%= link_to 'Editar', edit_contato_path(@contato), class: "btn btn-primary" %> |
+<%= link_to 'Voltar', contatos_path, class: "btn btn-warning" %>
+</div>
+</div>
+</div>
