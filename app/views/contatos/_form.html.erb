@@ -1,4 +1,4 @@
-<%= simple_form_for(@contato, html: { class: 'form-horizontal' }, wrapper: :horizontal_form,
+<%= simple_form_for(@contato, multipart: true , html: { class: 'form-horizontal' }, wrapper: :horizontal_form,
     wrapper_mappings: {
     check_boxes: :horizontal_radio_and_checkboxes,
     radio_buttons: :horizontal_radio_and_checkboxes,
@@ -23,7 +23,7 @@
   <%= f.input :email %>
   <%= f.input :telefone %>
   <%= f.input :nascimento %>
-  <%= f.input :foto, as: :file %>
+  <%= f.file_field :avatar%>
   
   <div class="form-group">
     <div class="col-sm-offset-3 col-sm-10">
