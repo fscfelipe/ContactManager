@@ -4,7 +4,3 @@
 
 
 #usando jquery
-
-$ -> 
-	$('.contatos').hover (event) ->
-		$(this).toggleClass("hover")

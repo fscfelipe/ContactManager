@@ -18,3 +18,19 @@ body { padding-top: 70px; }
 .alert {
 	margin-top: 10px;
 }
+
+.style_image {
+  border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 100px;
+}
+
+.style_image:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+.data1 {
+	font: 18px arial, sans-serif;
+	margin-left: 9px; 
+}
