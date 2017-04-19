@@ -1,13 +1,28 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :contatos
+#
+ # devise_scope :user do
+  #  get 'register', to: 'devise/registrations#new', as: :register
+   # get 'login', to: 'devise/sessions#new', as: :login
+    #get 'logout', to: 'devise/sessions#destroy', as: :logout
+    #root to: "devise/sessions#new"
+  #end
 
-  devise_scope :user do
-    get 'register', to: 'devise/registrations#new', as: :register
-    get 'login', to: 'devise/sessions#new', as: :login
+
+devise_scope :user do
+  authenticated :user do
+    root to: 'contatos#index', as: :authenticated_root
+    
     get 'logout', to: 'devise/sessions#destroy', as: :logout
-    root to: "devise/sessions#new"
   end
+
+  unauthenticated do
+    root to: "devise/sessions#new", as: :unauthenticated_root
+    get 'login', to: 'devise/sessions#new', as: :login
+    get 'register', to: 'devise/registrations#new', as: :register
+  end
+end
 
   
   get 'lista', to: 'contatos#index', as: :lista
