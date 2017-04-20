@@ -14,3 +14,11 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+function fadeInContatos(){
+$('.teste').hide();
+ $('.teste').fadeIn(1000);
+
+  
+}
+
+$(document).ready(fadeInContatos);
