@@ -18,6 +18,8 @@ class Contato < ActiveRecord::Base
       path: '/:class/:attachment/:id_partition/:style/:filename',
      :s3_credentials => Proc.new{|a| a.instance.s3_credentials }
 
+=begin
+   FUNÇÃO PARA FORNECER ACESSO AO AWS S3
   def s3_credentials
     {:bucket => ENV.fetch('S3_BUCKET_NAME'),
      s3_protocol: 'http', 
@@ -25,6 +27,7 @@ class Contato < ActiveRecord::Base
      :secret_access_key => ENV.fetch('AWS_SECRET_ACCESS_KEY'),
      :s3_region => ENV.fetch('AWS_REGION')}
   end
+=end
 
   def self.search(term)
     if term
