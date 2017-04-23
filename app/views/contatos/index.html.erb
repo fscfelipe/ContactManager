@@ -25,7 +25,7 @@
       <% if @contatos.present? %>
               <% current_user.contatos.each do |contato|  %>
           <!--  contato.nome.include? "Felipe"  -->
-                <%  if contato.nome.include? params[:term].to_s %>
+                <%  if ((contato.nome.include? params[:term].to_s) || (contato.apelido.include? params[:term].to_s ) || (contato.nascimento.to_formatted_s(:rfc822).include? params[:term] ) )%>
                     <div class= "contatos row">
                     <!-- <%= contato.avatar.url %> -->
                       <div class="row">
@@ -36,6 +36,7 @@
                           
                           <div class="col-md-8">
                           <div class="data1"><strong >Nome: </strong> <%= contato.nome %></div>
+                          <div class="data1"><strong >Apelido: </strong> <%= contato.apelido %></div>
                           <div class="data1"><strong >Email: </strong> <%= contato.email %></div>
                           <div class="data1"><strong >Telefone: </strong><%= contato.telefone %></div>
                           

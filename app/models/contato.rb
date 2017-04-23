@@ -5,7 +5,7 @@ class Contato < ActiveRecord::Base
 
   validates :avatar,
     attachment_content_type: { content_type: /\Aimage\/.*\Z/ },
-    attachment_size: { less_than: 5.megabytes }
+    attachment_size: { less_than: 3.megabytes }
 
 # This method associates the attribute ":avatar" with a file attachment
   has_attached_file :avatar,styles: {
@@ -28,7 +28,7 @@ class Contato < ActiveRecord::Base
 
   def self.search(term)
     if term
-      where('nome LIKE ?', "%#{term}%").order('id DESC')
+      where('nome LIKE ? OR apelido LIKE ? OR CAST(nascimento AS text) LIKE ?', "%#{term}%", "%#{term}%","%#{@term}%").order('id DESC')
     else
       order('id DESC') 
     end

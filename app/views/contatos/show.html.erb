@@ -28,7 +28,7 @@
 
 <p>
   <strong>Nascimento:</strong>
-  <%= @contato.nascimento %>
+  <%= @contato.nascimento.to_formatted_s(:rfc822) %>
 </p>
 </div>
 </div>
